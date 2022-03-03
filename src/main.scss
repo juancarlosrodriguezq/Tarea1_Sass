@@ -1,0 +1,166 @@
+$colorFondo: #5c042d52;
+$colorFondoSec: #FF8BA0;
+$colorFondoTer: #86003C;
+$colorTexto: rgb(228, 228, 227);
+$colorTextSec: rgb(0, 0, 0);
+$fontSizeBase: 10px;
+$sombra: 4px 4px 15px;
+
+//Declaracion de mixin
+@mixin setFlex ($flexDir, $align){
+    display: flex;
+    flex-direction: $flexDir; //row;
+    flex-wrap: wrap;
+    justify-content: $align; //space-around;
+}
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    
+}
+
+:root{
+    font-size: $fontSizeBase;
+}
+
+.encabezado{
+    background-color: $colorFondoTer;
+    padding: 1rem;
+    
+    
+
+    h1{
+        color: $colorTexto;
+        font-size: $fontSizeBase * 3.5; 
+        text-align: center;
+        font-family: cursive;
+             
+    }
+}
+
+.mainMenu{
+    background-color: $colorFondoSec;
+    padding: 0.4rem;
+    box-shadow: $sombra;
+
+    ul{
+        
+        @include setFlex(row, space-around);
+
+        a{
+            color: $colorTextSec;
+            font-size: 1.5rem;
+            font-family: fantasy;
+
+            &:hover{
+                color: $colorTexto;
+                background-color: $colorFondoTer;
+                padding: 0.5rem;
+                border-radius: 2rem;
+            }
+        }
+    }
+}
+
+.sectionMain{
+    
+    border-radius: 1rem;
+    box-shadow: $sombra;
+    margin: 5rem;
+    display: grid;
+    background-color: $colorFondo;
+
+    grid-template-areas: "titulo        menuSeccion"
+                          "descripcion  imagenDetalle"
+                          "menuDetalle  menuDetalle";
+
+    .titDet{
+       grid-area: titulo;
+       padding-top: 100px;
+       padding-right: 220px;
+       text-align: center;
+       font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .subMenu{
+        grid-area: menuSeccion;
+        @include setFlex(row, space-around);
+
+        li{
+            padding-top: 2rem;
+            
+            
+            a{
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                color: $colorTextSec;
+                font-size: $fontSizeBase* 1.5;
+                &:hover{
+                    color: rgb(0, 0, 0);
+                }
+            }
+            
+        }
+    }
+
+    .dsp{
+        grid-area: dsp;
+        @include setFlex(column,center );
+        margin: 0px 0px 0px 2rem;
+
+        p{
+            font-size: $fontSizeBase* 2;
+            text-align: justify;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            width: 40%;
+            margin-left: 10%;
+            margin-top: 0.5%;
+        }
+    }
+
+    .imagenDsp{
+        grid-area: imagenDetalle;
+        margin: 1.6rem;
+        max-width: 100%;
+        height: auto;
+
+        img{
+            border-radius: 20px;
+            width: 35rem;
+        }
+    }
+
+    .menuDet{
+        grid-area: menuDetalle;
+        @include setFlex(column, center);
+        padding-bottom: 0.5rem;
+        text-align: center;
+
+        li{
+            text-align: center;
+
+            a{
+                color: $colorTexto;
+                font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                font-size: $fontSizeBase * 1.5;
+                background-color: $colorFondoSec;
+                padding: 0.1rem 0.7rem;
+                border-radius: 2rem;
+                justify-content: center;
+                
+
+                &:hover{
+                    color: $colorFondoSec;
+                    background-color: $colorTexto;
+                }
+            }
+        }
+    }
+}
+
+
+
+
